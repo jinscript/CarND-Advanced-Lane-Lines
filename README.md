@@ -139,3 +139,4 @@ Here's a [link to my video result](./project_video_annotated.mp4)
 The algorithm is likely to fail if there are other "lines" on the road. For example, if the road color is different in the lane, the color bounary will be caught by gradient thresholding and generate false positives. I can leverge color information on both sides of the gradient to eliminate this kind of false positives.
 
 ![alt text][image9]
+
