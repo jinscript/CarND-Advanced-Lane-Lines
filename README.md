@@ -14,14 +14,14 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./assets/undistort_output.png "Undistorted"
-[image2]: ./assets/undistort_road.jpg "Road Transformed"
-[image3]: ./assets/grad_thresh.jpg "Grad Thresh"
-[image4]: ./assets/color_thresh.jpg "Color Thresh"
-[image5]: ./assets/combined_thresh.jpg "Combined Thresh"
-[image6]: ./assets/perspective.jpg "Warp Example"
-[image7]: ./assets/color_fit_lines.jpg "Fit Visual"
-[image8]: ./assets/output.jpg "Output"
-[video1]: ./annotated_project_video.mp4 "Video"
+[image2]: ./assets/undistort_road.png "Road Transformed"
+[image3]: ./assets/grad_thresh.png "Grad Thresh"
+[image4]: ./assets/color_thresh.png "Color Thresh"
+[image5]: ./assets/combined_thresh.png "Combined Thresh"
+[image6]: ./assets/perspective.png "Warp Example"
+[image7]: ./assets/color_fit_lines.png "Fit Visual"
+[image8]: ./assets/output.png "Output"
+[video1]: ./project_video_annotated.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -110,7 +110,7 @@ I implemented this step in lines # through # in my code in `yet_another_file.py`
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./annotated_project_video.mp4)
+Here's a [link to my video result](./project_video_annotated.mp4)
 
 ---
 
