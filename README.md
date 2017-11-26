@@ -73,9 +73,9 @@ This is the combined output of graident thresholding and color thresholding.
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The perspective transform matrix (M) is derived with hard coded source (`src`) and destination (`dst`) points. The code for this step is contained in the Perspective Transform section of the IPython notebook.
 
-This resulted in the following source and destination points:
+Here are source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
@@ -100,7 +100,7 @@ I did this in lines # through # in my code in `my_other_file.py`
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+The code for this step is contained in the Perspective Transform section of the IPython notebook. Here is an example of my result on a test image:
 
 ![alt text][image8]
 
