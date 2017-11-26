@@ -21,6 +21,7 @@ The goals / steps of this project are the following:
 [image6]: ./assets/perspective.png "Warp Example"
 [image7]: ./assets/color_fit_lines.png "Fit Visual"
 [image8]: ./assets/output.png "Output"
+[image9]: ./assets/challenge.png "Challenge"
 [video1]: ./project_video_annotated.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -73,7 +74,7 @@ This is the combined output of graident thresholding and color thresholding.
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The perspective transform matrix (M) is derived with hard coded source (`src`) and destination (`dst`) points. The code for this step is contained in the Perspective Transform section of the IPython notebook.
+The perspective transform matrix (M) is derived using `cv2.getPerspectiveTransform()` with hard coded source (`src`) and destination (`dst`) points. The code for this step is contained in the Perspective Transform section of the IPython notebook.
 
 Here are source and destination points:
 
@@ -90,17 +91,34 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+I fit a second order polynomial into lane line pixels with following steps:
+
+First, divide a single image into 9 vertical layers, each layer has a height of 80 pixels.
+In each layer, I search for the pixel with largest value in the left half image as left lane line pixel, and the pixel with largest value in the right half image as right lane line pixel. I stored lane line pixels into `window_centroids` variable.
+
+The code for this step is contained in the Finding Lane Lines section of the IPython notebook.
+
+Second, I fit a second order polynomial to each lane line using `np.polyfit()`.
+
+The code for this step is contained in the Measuring Curvature section of the IPython notebook.
 
 ![alt text][image7]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+For calculating the radius of the curvature. I first fit a polynomial with pixels converted to meters for each lane. And then I calculate the radius using Radius of Curvature formula.
+
+The code for this step is contained in the Measuring Curvature section of the IPython notebook.
+
+I calculate the postition of the vehicle with respect to center using this formula: `offset_in_meters = ((left_lane_pixel + right_lane_pixel) / 2 - image_width / 2) * xm_per_pix`.
+
+Where left_lane_pixel, right_lane_pixel are the lane pixels closest to the vehicle.
+
+The code for this step is contained in the Pipeline section of the IPython notebook.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-The code for this step is contained in the Perspective Transform section of the IPython notebook. Here is an example of my result on a test image:
+The code for this step is contained in the Pipeline section of the IPython notebook. Here is an example of my result on a test image:
 
 ![alt text][image8]
 
@@ -118,6 +136,6 @@ Here's a [link to my video result](./project_video_annotated.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-One problem is that the algorithm may fail if there are lines which are not actually lane lines. This happens when
+The algorithm is likely to fail if there are other "lines" on the road. For example, if the road color is different in the lane, the color bounary will be caught by gradient thresholding and generate false positives. I can leverge color information on both sides of the gradient to eliminate this kind of false positives.
 
-Another problem is that the algorithm 
+![alt text][image9]
