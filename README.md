@@ -94,13 +94,11 @@ I verified that my perspective transform was working as expected by drawing the 
 I fit a second order polynomial into lane line pixels with following steps:
 
 First, divide a single image into 9 vertical layers, each layer has a height of 80 pixels.
-In each layer, I search for the pixel with largest value in the left half image as left lane line pixel, and the pixel with largest value in the right half image as right lane line pixel. I stored lane line pixels into `window_centroids` variable.
-
-The code for this step is contained in the Finding Lane Lines section of the IPython notebook.
+In each layer, I find out left lane pixels and right lane pixels using sliding window. I also provide a way to search for lane pixels given parameters from previous frame.
 
 Second, I fit a second order polynomial to each lane line using `np.polyfit()`.
 
-The code for this step is contained in the Measuring Curvature section of the IPython notebook.
+The code for this step is contained in the Finding Lane Lines section of the IPython notebook.
 
 ![alt text][image7]
 
@@ -108,13 +106,11 @@ The code for this step is contained in the Measuring Curvature section of the IP
 
 For calculating the radius of the curvature. I first fit a polynomial with pixels converted to meters for each lane. And then I calculate the radius using Radius of Curvature formula.
 
-The code for this step is contained in the Measuring Curvature section of the IPython notebook.
-
 I calculate the postition of the vehicle with respect to center using this formula: `offset_in_meters = ((left_lane_pixel + right_lane_pixel) / 2 - image_width / 2) * xm_per_pix`.
 
 Where left_lane_pixel, right_lane_pixel are the lane pixels closest to the vehicle.
 
-The code for this step is contained in the Pipeline section of the IPython notebook.
+The code for this step is contained in the Measuring Curvature & Offset section of the IPython notebook.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
@@ -139,4 +135,3 @@ Here's a [link to my video result](./project_video_annotated.mp4)
 The algorithm is likely to fail if there are other "lines" on the road. For example, if the road color is different in the lane, the color bounary will be caught by gradient thresholding and generate false positives. I can leverge color information on both sides of the gradient to eliminate this kind of false positives.
 
 ![alt text][image9]
-
