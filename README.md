@@ -64,7 +64,7 @@ I use sobel filter to compute the gradient on x and y axis for each pixel. Then 
 ![alt text][image3]
 
 Color threshold:
-I converted the image to HLS space. Then I applied threshold on the S channel. The code for this step is contained in the Color Threshold section of the IPython notebook.
+I converted the image to HLS space, LUV space and LAB space. Then I applied threshold on the S, L, B channels, correspondingly. The code for this step is contained in the Color Threshold section of the IPython notebook.
 
 ![alt text][image4]
 
